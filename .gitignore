@@ -1,0 +1,6 @@
+venv/
+.env
+*.json
+reports/
+__pycache__/
+*.db
