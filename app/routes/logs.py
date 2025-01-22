@@ -5,13 +5,13 @@ from sqlalchemy.orm import Session
 
 from app.core.database import get_db
 from app.crud.logs_crud import save_log
-from app.services.logs_service import fetch_all_logs, fetch_windows_logs
+from app.services.logs_service import  fetch_platform_logs
 
 router=APIRouter()
 
 @router.get("/")
 async def fetch_and_save_logs(db: Session = Depends(get_db)):
-   logs= await fetch_all_logs(["Application"])
+   logs= await fetch_platform_logs(["Application"])
    print("startttt")
    print(logs)
    print("enddddd")
