@@ -1,6 +1,6 @@
 from ..database import Base
 from .logs import Log
-from .user import User
-from .source import Source
+from .user_models import User
+from .sources import Source
 
 __all__ = ["Base", "Log", "User", "Source"]
