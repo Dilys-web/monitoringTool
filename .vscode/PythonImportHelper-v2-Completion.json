@@ -97,6 +97,22 @@
         "documentation": {}
     },
     {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "settings",
         "importPath": "app.core.config",
         "description": "app.core.config",
@@ -105,7 +121,31 @@
         "documentation": {}
     },
     {
+        "label": "Log",
+        "importPath": "app.models.logs",
+        "description": "app.models.logs",
+        "isExtraImport": true,
+        "detail": "app.models.logs",
+        "documentation": {}
+    },
+    {
+        "label": "Log",
+        "importPath": "app.models.logs",
+        "description": "app.models.logs",
+        "isExtraImport": true,
+        "detail": "app.models.logs",
+        "documentation": {}
+    },
+    {
         "label": "Base",
+        "importPath": "app.core.database",
+        "description": "app.core.database",
+        "isExtraImport": true,
+        "detail": "app.core.database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
         "importPath": "app.core.database",
         "description": "app.core.database",
         "isExtraImport": true,
@@ -134,10 +174,27 @@
         "description": "datetime",
         "isExtraImport": true,
         "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
         "documentation": {}
     },
     {
         "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -150,6 +207,30 @@
         "description": "fastapi",
         "isExtraImport": true,
         "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "sqlalchemy.testing",
+        "description": "sqlalchemy.testing",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.testing",
+        "documentation": {}
+    },
+    {
+        "label": "save_log",
+        "importPath": "app.crud.logs_crud",
+        "description": "app.crud.logs_crud",
+        "isExtraImport": true,
+        "detail": "app.crud.logs_crud",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_platform_logs",
+        "importPath": "app.services.logs_service",
+        "description": "app.services.logs_service",
+        "isExtraImport": true,
+        "detail": "app.services.logs_service",
         "documentation": {}
     },
     {
@@ -185,6 +266,14 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Union",
         "importPath": "typing",
         "description": "typing",
@@ -193,11 +282,12 @@
         "documentation": {}
     },
     {
-        "label": "Log",
-        "importPath": "app.models.logs",
-        "description": "app.models.logs",
+        "label": "platform",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "app.models.logs",
+        "importPath": "platform",
+        "description": "platform",
+        "detail": "platform",
         "documentation": {}
     },
     {
@@ -209,7 +299,25 @@
         "documentation": {}
     },
     {
-        "label": "users",
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "win32evtlog",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "win32evtlog",
+        "description": "win32evtlog",
+        "detail": "win32evtlog",
+        "documentation": {}
+    },
+    {
+        "label": "logs",
         "importPath": "app.routes",
         "description": "app.routes",
         "isExtraImport": true,
@@ -305,15 +413,6 @@
         "documentation": {}
     },
     {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
         "label": "Settings",
         "kind": 6,
         "importPath": "app.core.config",
@@ -368,21 +467,21 @@
         "documentation": {}
     },
     {
+        "label": "get_logs",
+        "kind": 2,
+        "importPath": "app.crud.logs_crud",
+        "description": "app.crud.logs_crud",
+        "peekOfCode": "def get_logs(db: Session, log_source: str = None):\n    return db.query(Log).all()",
+        "detail": "app.crud.logs_crud",
+        "documentation": {}
+    },
+    {
         "label": "Log",
         "kind": 6,
         "importPath": "app.models.logs",
         "description": "app.models.logs",
-        "peekOfCode": "class Log(Base):\n    __tablename__ = 'logs'\n    id = Column(Integer, primary_key=True, index=True)\n    log_source = Column(String, index=True)\n    log_type = Column(String)\n    severity = Column(String)\n    message = Column(Text)\n    timestamp = Column(TIMESTAMP, default=datetime.utcnow)\n    source_ip = Column(String)\n    platform = Column(String)",
+        "peekOfCode": "class Log(Base):\n    __tablename__ = 'logs'\n    id = Column(Integer, primary_key=True, index=True)\n    log_source = Column(String, index=True)\n    severity = Column(String)\n    message = Column(Text)\n    timestamp = Column(TIMESTAMP, default=datetime.utcnow)",
         "detail": "app.models.logs",
-        "documentation": {}
-    },
-    {
-        "label": "get_users",
-        "kind": 2,
-        "importPath": "app.routes.users",
-        "description": "app.routes.users",
-        "peekOfCode": "def get_users():\n   return [{\"id\": 1, \"name\": \"Alice\"}, {\"id\": 2, \"name\": \"Bob\"}]",
-        "detail": "app.routes.users",
         "documentation": {}
     },
     {
@@ -390,7 +489,7 @@
         "kind": 6,
         "importPath": "app.schemas.log_schema",
         "description": "app.schemas.log_schema",
-        "peekOfCode": "class LogBase(Base):\n    log_source: str\n    log_type: str\n    severity: Optional[str] = None\n    message: str\n    timestamp: Optional[datetime] = None\n    source_ip: Optional[str] = None\n    platform: Optional[str] = None\n    service_name: Optional[str] = None\n    log_metadata: Optional[Dict[str, Any]] = None",
+        "peekOfCode": "class LogBase(BaseModel):\n    log_source: str\n    severity: Optional[str] = None\n    message: str\n    timestamp: Optional[datetime] = None\nclass LogCreate(LogBase):\n    pass\nclass Log(LogBase):\n    id: int\n    class Config:",
         "detail": "app.schemas.log_schema",
         "documentation": {}
     },
@@ -415,28 +514,55 @@
     {
         "label": "create_log",
         "kind": 2,
-        "importPath": "app.services.logs",
-        "description": "app.services.logs",
+        "importPath": "app.services.logs_service",
+        "description": "app.services.logs_service",
         "peekOfCode": "def create_log(db: Session, log: LogCreate):\n    db_log = Log(**log.dict())\n    db.add(db_log)\n    db.commit()\n    db.refresh(db_log)\n    return db_log\n# Get logs\ndef get_logs(db: Session, skip: int = 0, limit: int = 10):\n    return db.query(Log).offset(skip).limit(limit).all()\ndef get_log():",
-        "detail": "app.services.logs",
+        "detail": "app.services.logs_service",
         "documentation": {}
     },
     {
         "label": "get_logs",
         "kind": 2,
-        "importPath": "app.services.logs",
-        "description": "app.services.logs",
-        "peekOfCode": "def get_logs(db: Session, skip: int = 0, limit: int = 10):\n    return db.query(Log).offset(skip).limit(limit).all()\ndef get_log():\n    return {\"logger\":\"Info\"}",
-        "detail": "app.services.logs",
+        "importPath": "app.services.logs_service",
+        "description": "app.services.logs_service",
+        "peekOfCode": "def get_logs(db: Session, skip: int = 0, limit: int = 10):\n    return db.query(Log).offset(skip).limit(limit).all()\ndef get_log():\n    return {\"logger\":\"Info\"}\ndef fetch_linux_logs():\n    try:\n        # Example: Tail the syslog\n        logs = subprocess.check_output([\"tail\", \"-n\", \"10\", \"/var/log/syslog\"]).decode(\"utf-8\")\n        return logs.split(\"\\n\")\n    except Exception as e:",
+        "detail": "app.services.logs_service",
         "documentation": {}
     },
     {
         "label": "get_log",
         "kind": 2,
-        "importPath": "app.services.logs",
-        "description": "app.services.logs",
-        "peekOfCode": "def get_log():\n    return {\"logger\":\"Info\"}",
-        "detail": "app.services.logs",
+        "importPath": "app.services.logs_service",
+        "description": "app.services.logs_service",
+        "peekOfCode": "def get_log():\n    return {\"logger\":\"Info\"}\ndef fetch_linux_logs():\n    try:\n        # Example: Tail the syslog\n        logs = subprocess.check_output([\"tail\", \"-n\", \"10\", \"/var/log/syslog\"]).decode(\"utf-8\")\n        return logs.split(\"\\n\")\n    except Exception as e:\n        return [f\"Error fetching Linux logs: {str(e)}\"]\nasync def fetch_all_logs(log_types:List[str]):",
+        "detail": "app.services.logs_service",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_linux_logs",
+        "kind": 2,
+        "importPath": "app.services.logs_service",
+        "description": "app.services.logs_service",
+        "peekOfCode": "def fetch_linux_logs():\n    try:\n        # Example: Tail the syslog\n        logs = subprocess.check_output([\"tail\", \"-n\", \"10\", \"/var/log/syslog\"]).decode(\"utf-8\")\n        return logs.split(\"\\n\")\n    except Exception as e:\n        return [f\"Error fetching Linux logs: {str(e)}\"]\nasync def fetch_all_logs(log_types:List[str]):\n        try:\n            # Specify the target machine (local or remote)",
+        "detail": "app.services.logs_service",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_logs_from_windows",
+        "kind": 2,
+        "importPath": "app.services.logs_service",
+        "description": "app.services.logs_service",
+        "peekOfCode": "def fetch_logs_from_windows(log_types: List[str]) -> List[dict]:\n    \"\"\"\n    Fetch logs from Windows Event Viewer.\n    \"\"\"\n    try:\n        all_logs = []\n        server = 'localhost'  # Can be customized for remote logs\n        for log_type in log_types:\n            print(f\"Fetching logs from: {log_type} on Windows\")\n            # Open each event log",
+        "detail": "app.services.logs_service",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_logs_from_linux",
+        "kind": 2,
+        "importPath": "app.services.logs_service",
+        "description": "app.services.logs_service",
+        "peekOfCode": "def fetch_logs_from_linux(log_types: List[str]) -> List[dict]:\n    \"\"\"\n    Fetch logs from Linux system log files.\n    \"\"\"\n    try:\n        all_logs = []\n        log_files = [\"/var/log/syslog\", \"/var/log/dmesg\", \"/var/log/auth.log\"]\n        for log_file in log_files:\n            if log_file.split(\"/\")[-1] in log_types:  # Only process logs that are specified\n                try:",
+        "detail": "app.services.logs_service",
         "documentation": {}
     },
     {
@@ -444,7 +570,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI()\n# Create tables if they do not exist (usually run this once at the beginning)\nmodels.Base.metadata.create_all(bind=database.engine)\napp.include_router(users.router,prefix=\"/api/v1/users\", tags=[\"Users\"])",
+        "peekOfCode": "app = FastAPI()\n# Create tables if they do not exist (usually run this once at the beginning)\nmodels.Base.metadata.create_all(bind=database.engine)\napp.include_router(logs.router, prefix=\"/api/v1/logs\", tags=[\"Users\"])",
         "detail": "app.main",
         "documentation": {}
     },
