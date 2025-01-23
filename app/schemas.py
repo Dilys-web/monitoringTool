@@ -16,3 +16,8 @@ class UserResponse(UserBase):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+
+class AWSCredentials(BaseModel):
+    access_key: str
+    secret_key: str
