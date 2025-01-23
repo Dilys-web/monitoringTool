@@ -2,9 +2,9 @@ import boto3
 from botocore.exceptions import BotoCoreError, ClientError
 from fastapi import HTTPException
 
-def retrieve_aws_logs(log_group: str, start_time: int, end_time: int, aws_access_key: str, aws_secret_key: str):
+def retrieve_logs(log_group, start_time, end_time, aws_access_key, aws_secret_key):
     try:
-        # Create a session with dynamic credentials
+        # Create a session using provided AWS credentials
         session = boto3.Session(
             aws_access_key_id=aws_access_key,
             aws_secret_access_key=aws_secret_key
@@ -24,10 +24,10 @@ def retrieve_aws_logs(log_group: str, start_time: int, end_time: int, aws_access
         for event in response.get('events', []):
             logs.append({
                 "timestamp": event.get("timestamp"),
-                "message": event.get("message")
+                "message": event.get("message"),
             })
 
         return logs
 
     except (BotoCoreError, ClientError) as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
