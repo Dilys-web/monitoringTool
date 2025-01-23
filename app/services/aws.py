@@ -25,6 +25,8 @@ def retrieve_logs(log_group, start_time, end_time, aws_access_key, aws_secret_ke
             logs.append({
                 "timestamp": event.get("timestamp"),
                 "message": event.get("message"),
+                "source": event.get("logStreamName"),
+                "level": event.get("logLevel")
             })
 
         return logs

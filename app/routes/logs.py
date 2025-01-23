@@ -1,5 +1,7 @@
 from datetime import datetime
+import platform
 from typing import List, Optional
+import typing
 from fastapi import APIRouter, Depends, HTTPException, Query
 from requests import Session
 
@@ -14,16 +16,34 @@ router = APIRouter()
 
 
 
+# @router.get("/local")
+# def get_local_logs(file_path: str = Query(...)):
+#     try:
+#         logs = retrieve_logs(file_path)
+#         return {"logs": logs}
+#     except FileNotFoundError:
+#         raise HTTPException(status_code=404, detail="Log file not found")
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
 @router.get("/local")
-def get_local_logs(file_path: str = Query(...)):
+async def get_local_logs(
+    log_types:Optional[typing.List[str]] = Query(None, description="List of log types to fetch")):
     try:
-        logs = retrieve_logs(file_path)
-        return {"logs": logs}
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="Log file not found")
+        current_platform = platform.system()
+        if not log_types:
+            if current_platform == "Windows":
+                log_types = ["Application"]
+            elif current_platform == "Linux":
+                log_types = ["syslog"]
+            else:
+                return {"error": "Unsupported platform"}
+            
+        logs= await fetch_platform_logs(log_types)
+    
+        return {"status": "success", "logs_saved": logs}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
+        return [f"Error fetching  logs: {str(e)}"]
+    
 
 @router.get("/aws")
 def get_aws_logs(
